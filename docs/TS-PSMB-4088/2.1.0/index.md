@@ -36,7 +36,7 @@
 ```json
 {
 	"devName": "TS-PSMB-2306B",
-	"devId": "TSKJ7CDFA1B9A954",
+	"devId": "TSKJA1B9A954",
 	"devVersion": "2.0.1",
 	"online": true,
 	"updateTime": 1665285245,
@@ -62,7 +62,7 @@
 通信质量：设备与MQTT服务器QoS1
 ```json
 {
-    "devId": "TSKJ7CDFA1B9A954",
+    "devId": "TSKJA1B9A954",
     "online": false,
     "updateTime": 1665285245
 }
@@ -201,7 +201,7 @@ cmd表:
 通信质量：设备与MQTT服务器QoS1
 ```json
 {
-    "devId": "TSKJ7CDFA1B9A954",
+    "devId": "TSKJA1B9A954",
     "{key}": {new value},
     "cmd": "Option",
     "updateTime": 1665285245,
@@ -214,7 +214,7 @@ cmd表:
 通信质量：设备与MQTT服务器QoS1
 ```json
 {
-    "devId": "TSKJ7CDFA1B9A954",
+    "devId": "TSKJA1B9A954",
     "updateTime": 1665285245, //数据更新时间
     "bodymove": false, //体动标志
     "bodymoveStrength": 0.0, //体动强度
@@ -252,14 +252,34 @@ cmd表:
 
 上报频率：除了updateTime，这里有任何一个数值的更新，设备就会上报；如果超过maxupatetime没数据更新，会主动报一次数据。
 
+### 5.6 设备发送曲线
+类型: 设备发布
+主题: /dev/{devId}/sig
+通信质量：设备与MQTT服务器QoS0
+```json
+{
+    "devId": "TSKJA1B9A954",
+    "sig_br" : 5000,
+    "sig_bd" : 0,
+}
+```
+---
 
-### 5.6 设备上报日志
+| 字段名 | 类型 | 取值 | 解释 |
+| --- | --- | --- | --- |
+| devId | 字符串 | "TSKJxxxx"等 | 设备ID |
+| sig_br | 整形 | 1~10000 | 呼吸波形 |
+| sig_bd | 整形 | 0：无体动<br>1：体动 | 体动信号 |
+
+---
+
+### 5.7 设备上报日志
 类型: 设备发布
 主题: /dev/{devId}/log
 通信质量：设备与MQTT服务器QoS1
 ```json
 {
-    "devId": "TSKJ7CDFA1B9A954",
+    "devId": "TSKJA1B9A954",
     "message": "Equipment in normal operation",
     "updateTime" : 1665285245
 }
