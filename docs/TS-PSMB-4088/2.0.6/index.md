@@ -105,7 +105,7 @@ key表:
 | bodymove-se | 1-10(默认5)<br>1:最不灵敏<br>10:最灵敏 | se=Sensitivity,体动识别的灵敏度 | 非必要 |
 | ota-url | - | 用于ota升级的镜像文件地址 | 非必要 |
 | mac_temperature | 默认无 | 过滤温度贴产品的mac地址 | 非必要 |
-| humendetect | 3-20(默认7)<br>3:最灵敏<br>20:最不灵敏 | 2.0.7新增<br>检测在离床的阈值 | 非必要 |
+| humendetect | 3-20(默认7)<br>3:最灵敏<br>20:最不灵敏 | 2.0.6新增<br>检测在离床的阈值 | 非必要 |
 
 ---
 cmd表:
