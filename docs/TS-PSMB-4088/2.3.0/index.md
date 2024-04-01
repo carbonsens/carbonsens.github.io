@@ -64,16 +64,17 @@
 ```json
 {
     "devId": "TSKJA1B9A954",
-    "online": false,
-    "updateTime": 1665285245
+    "online": false
 }
 ```
 | 字段名 | 类型 | 取值 | 解释 |
 | --- | --- | --- | --- |
 | devId | 字符串 | "TSKJxxxx"等 | 设备ID |
 | online | bool | false | 设备离线状态 |
-| updateTime | 整数 | Unix 时间戳 | 数据更新时间 |
+
+
 使用场景：发现设备离线
+
 ### 5.3 设备设置
 当需要对设备进行设置，具体协议如下。配置key-value会修改设备内部value数据，配置cmd会执行特殊操作，cmd是非必要填写。
 类型: 设备订阅
