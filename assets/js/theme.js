@@ -300,7 +300,6 @@ $(document).ready(function() {
   
   // 更新导航树
   function updateToctree(product) {
-      const currentPath = location.pathname;
       $.ajax({
           url: `${ui.baseurl}/docs/${product}/`,
           success: function(data) {
@@ -308,7 +307,7 @@ $(document).ready(function() {
               $('.toctree').html(toctree);
               
               // 重新初始化导航状态
-              initialize(currentPath);
+              initialize(location.pathname);
               toc();
               
               // 重新绑定展开/折叠事件
@@ -334,6 +333,12 @@ $(document).ready(function() {
       set('currentProduct', currentProduct);
       productSelect.val(`/docs/${currentProduct}/`);
       updateToctree(currentProduct);
+  } else {
+      // 如果没有选择产品，默认跳转到第一个产品
+      const firstProduct = productSelect.find('option:eq(1)').val();
+      if (firstProduct) {
+          window.location.href = `${ui.baseurl}${firstProduct}`;
+      }
   }
   
   // 处理产品切换

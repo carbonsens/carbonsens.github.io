@@ -1,6 +1,16 @@
 {% assign current_product = page.dir | split: '/' | slice: 2 | first %}
 
 <ul>
+    {% comment %} 显示目录标题 {% endcomment %}
+    {% if workdir_level == 2 %}
+        <li class="toc level-1">
+            <a class="caption d-block text-uppercase no-wrap px-2 py-0">
+                {{ current_product }}
+            </a>
+        </li>
+    {% endif %}
+
+    {% comment %} 显示文件 {% endcomment %}
     {%- for item in workdir_files -%}
         {% assign item_product = item.dir | split: '/' | slice: 2 | first %}
         {% if item_product == current_product %}
@@ -19,11 +29,14 @@
             </li>
         {% endif %}
     {%- endfor %}
-</ul>
 
-{%- for workdir in workdir_dirs -%}
-    {% assign dir_product = workdir | split: '/' | slice: 2 | first %}
-    {% if dir_product == current_product %}
-        {% include templates/_toctree.liquid %}
-    {% endif %}
-{%- endfor -%}
+    {% comment %} 递归显示子目录 {% endcomment %}
+    {%- for workdir in workdir_dirs -%}
+        {% assign dir_product = workdir | split: '/' | slice: 2 | first %}
+        {% if dir_product == current_product %}
+            <li class="toc">
+                {% include templates/_toctree.liquid %}
+            </li>
+        {% endif %}
+    {%- endfor -%}
+</ul>
