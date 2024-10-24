@@ -310,7 +310,7 @@ $(document).ready(function() {
               initialize(location.pathname);
               toc();
               
-              // 重新绑定展开/折叠事件
+              // 重新绑定展开/折叠事件，并默认展开所有目录
               $(".toc ul").siblings("a").each(function() {
                   let link = $(this);
                   if (!link.find('.fa-plus-square-o').length) {
@@ -321,6 +321,10 @@ $(document).ready(function() {
                           return false;
                       });
                       link.prepend(expand);
+                  }
+                  // 默认展开
+                  if (!link.closest('li').hasClass('current')) {
+                      toggleCurrent(link);
                   }
               });
           }
