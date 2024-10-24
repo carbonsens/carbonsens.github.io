@@ -1,5 +1,10 @@
 {%- assign workdir = include.workdir | default: "/" -%}
 
+{%- assign workdir_parts = workdir | split: '/' -%}
+{%- assign product_level = workdir_parts | slice: 0, 3 | join: '/' -%}
+
+{%- assign workdir = product_level -%}
+
 {%- assign workdir_level = workdir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
 {%- assign workdir_files = site_files | where_exp: "item", "item.dir == workdir" -%}
 
@@ -9,7 +14,6 @@
         {%- if workdir_level == current_m1 -%}
             {%- assign temp = workdir | append: "@@" -%}
             {%- assign dir = item.dir | replace: workdir, temp | split: "@@" | first -%}
-            {% comment %} In the current subdirectory {% endcomment %}
             {%- if workdir == dir -%}
                 {{ item.dir }}|
             {%- endif -%}
