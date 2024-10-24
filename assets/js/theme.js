@@ -285,3 +285,64 @@ if ("serviceWorker" in navigator) {
 } else {
   debug("Service Worker not supported!");
 }
+
+// 产品选择处理
+$(document).ready(function() {
+  const productSelect = $("#product-select");
+  
+  // 获取当前产品
+  function getCurrentProduct() {
+      if (location.pathname.includes('/docs/')) {
+          return location.pathname.split('/docs/')[1].split('/')[0];
+      }
+      return '';
+  }
+  
+  // 更新导航树
+  function updateToctree(product) {
+      const currentPath = location.pathname;
+      $.ajax({
+          url: `${ui.baseurl}/docs/${product}/`,
+          success: function(data) {
+              const toctree = $(data).find('.toctree').html();
+              $('.toctree').html(toctree);
+              
+              // 重新初始化导航状态
+              initialize(currentPath);
+              toc();
+              
+              // 重新绑定展开/折叠事件
+              $(".toc ul").siblings("a").each(function() {
+                  let link = $(this);
+                  if (!link.find('.fa-plus-square-o').length) {
+                      let expand = $('<i class="fa fa-plus-square-o"></i>');
+                      expand.on("click", function(e) {
+                          e.stopPropagation();
+                          toggleCurrent(link);
+                          return false;
+                      });
+                      link.prepend(expand);
+                  }
+              });
+          }
+      });
+  }
+  
+  // 初始化当前产品
+  const currentProduct = getCurrentProduct();
+  if (currentProduct) {
+      set('currentProduct', currentProduct);
+      productSelect.val(`/docs/${currentProduct}/`);
+      updateToctree(currentProduct);
+  }
+  
+  // 处理产品切换
+  productSelect.on('change', function() {
+      const selectedPath = $(this).val();
+      if (selectedPath) {
+          const newProduct = selectedPath.split('/docs/')[1].split('/')[0];
+          set('currentProduct', newProduct);
+          window.location.href = `${ui.baseurl}${selectedPath}`;
+      }
+  });
+});
