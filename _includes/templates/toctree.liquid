@@ -10,6 +10,20 @@
         </li>
     {% endif %}
 
+    {% comment %} 显示目录 {% endcomment %}
+    {%- for workdir in workdir_dirs -%}
+        {% assign dir_product = workdir | split: '/' | slice: 2 | first %}
+        {% if dir_product == current_product %}
+            {% assign dir = site_pages | where: "url", workdir | first %}
+            <li class="toc level-1">
+                <a class="d-flex flex-items-baseline" href="{{ dir.url | relative_url }}">
+                    {{ dir.title | default: workdir | split: '/' | last }}
+                </a>
+                {% include templates/_toctree.liquid %}
+            </li>
+        {% endif %}
+    {%- endfor -%}
+
     {% comment %} 显示文件 {% endcomment %}
     {%- for item in workdir_files -%}
         {% assign item_product = item.dir | split: '/' | slice: 2 | first %}
@@ -29,14 +43,4 @@
             </li>
         {% endif %}
     {%- endfor %}
-
-    {% comment %} 递归显示子目录 {% endcomment %}
-    {%- for workdir in workdir_dirs -%}
-        {% assign dir_product = workdir | split: '/' | slice: 2 | first %}
-        {% if dir_product == current_product %}
-            <li class="toc">
-                {% include templates/_toctree.liquid %}
-            </li>
-        {% endif %}
-    {%- endfor -%}
 </ul>
