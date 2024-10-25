@@ -1,6 +1,6 @@
 ---
 title: EspBlufi APP
-sort: 4
+sort: 3
 ---
 
 # EspBlufi APP 安装和使用教程
