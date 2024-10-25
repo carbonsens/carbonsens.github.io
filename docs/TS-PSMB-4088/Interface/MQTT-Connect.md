@@ -9,6 +9,7 @@ sort: 2
 设备端通过与MQTT服务器建立连接，服务器通过MQTT订阅获取设备信息。详细协议说明请参考[MQTT接口文档](./MQTT-Interface)。
 
 测试软件使用 [MQTTX](https://mqttx.app/zh/downloads)
+
 推荐服务器使用 [EMQX](https://www.emqx.com/zh/downloads-and-install/broker)
 
 ## 2. 版本支持
