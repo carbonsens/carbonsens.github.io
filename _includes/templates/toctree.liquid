@@ -19,7 +19,7 @@
                 <a class="d-flex flex-items-baseline" href="{{ dir.url | relative_url }}">
                     {{ dir.title | default: workdir | split: '/' | last }}
                 </a>
-                {% include templates/_toctree.liquid %}  <!-- 移除 workdir 参数 -->
+                {% include templates/_toctree.liquid workdir=workdir %}
             </li>
         {% endif %}
     {%- endfor %}
