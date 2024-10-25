@@ -1,7 +1,5 @@
 ---
-title: 概述
+title: TS-PSMB-4088
 sort: 1
+redirect_to: /docs/TS-PSMB-4088/概述/
 ---
-# 这页是概述
-
-包含2个页面
