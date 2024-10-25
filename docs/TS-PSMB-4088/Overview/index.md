@@ -1,5 +1,8 @@
 ---
 title: 开始使用
 sort: 1
-redirect_to: ./Overview.md
 ---
+
+- [开始使用](./Overview.md)
+- [接口](./Notes.md)
+- [实例](./Example.md)
