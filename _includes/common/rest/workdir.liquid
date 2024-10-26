@@ -1,23 +1,37 @@
-{%- assign workdir = include.workdir | default: "/" -%}
+{%- assign workdir = include.workdir | default: "/" -%}  {# 获取工作目录，如果没有提供则默认为根目录 #}
 
-{%- assign workdir_parts = workdir | split: '/' -%}
-{%- assign product_level = workdir_parts | slice: 0, 4 | join: '/' -%}
+{%- assign workdir_parts = workdir | split: '/' -%}  {# 将工作目录按斜杠分割成数组 #}
+{%- assign product_level = workdir_parts | slice: 0, 4 | join: '/' -%}  {# 获取前4个部分，构建产品级别的目录 #}
 
-{%- assign workdir = product_level -%}
+{%- assign workdir = product_level -%}  {# 将工作目录更新为产品级别的目录 #}
 
-{%- assign workdir_level = workdir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
-{%- assign workdir_files = site_files | where_exp: "item", "item.dir == workdir" -%}
+{%- assign workdir_level = workdir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}  {# 计算工作目录的层级 #}
+{%- assign workdir_files = site_files | where_exp: "item", "item.dir == workdir" -%}  {# 获取当前工作目录下的所有文件 #}
 
-{%- capture items -%}
-    {%- for item in site_dirs -%}
-        {%- assign current_m1 = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size | minus: 1 -%}
-        {%- if workdir_level == current_m1 -%}
-            {%- assign temp = workdir | append: "@@" -%}
-            {%- assign dir = item.dir | replace: workdir, temp | split: "@@" | first -%}
-            {%- if workdir == dir -%}
-                {{ item.dir }}|
+{%- capture items -%}  {# 捕获符合条件的目录项 #}
+    {%- for item in site_dirs -%}  {# 遍历所有站点目录 #}
+        {%- assign current_m1 = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size | minus: 1 -%}  {# 计算当前目录的层级 #}
+        {%- if workdir_level == current_m1 -%}  {# 检查当前目录层级是否与工作目录层级匹配 #}
+            {%- assign temp = workdir | append: "@@" -%}  {# 创建临时变量以便后续处理 #}
+            {%- assign dir = item.dir | replace: workdir, temp | split: "@@" | first -%}  {# 替换工作目录并获取目录 #}
+            {%- if workdir == dir -%}  {# 检查工作目录是否与当前目录匹配 #}
+                {{ item.dir }}|  {# 输出匹配的目录 #}
             {%- endif -%}
         {%- endif -%}
     {%- endfor -%}
-{%- endcapture -%}
-{%- assign workdir_dirs = items | split: "|" -%}
+{%- endcapture -%}  {# 结束捕获 #}
+{%- assign workdir_dirs = items | split: "|" -%}  {# 将捕获的目录项分割成数组 #}
+
+/* 
+变量意义：
+workdir: 当前工作目录
+workdir_parts: 工作目录的各个部分数组
+product_level: 产品级别的目录
+workdir_level: 当前工作目录的层级
+workdir_files: 当前工作目录下的所有文件
+items: 捕获的符合条件的目录项
+current_m1: 当前目录的层级
+temp: 临时变量，用于处理目录
+dir: 替换后的目录
+workdir_dirs: 捕获的目录项分割后的数组
+*/
