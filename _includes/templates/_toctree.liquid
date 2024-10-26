@@ -3,13 +3,14 @@
 {% comment %} display the directory name {% endcomment %}
 {%- assign dir = site_pages | where: "url", workdir | first -%}
 
-{%- if workdir_level == 2 %}
-    {% comment %} display the root sub-directory as "p.caption" {% endcomment %}
-    <a class="caption d-block text-uppercase no-wrap px-2 py-0" href="{{ dir.url | relative_url }}">
+{%- if workdir_level <= 4 %}
+    {% comment %} 前4级目录不使用缩进样式 {% endcomment %}
+    <a class="d-flex flex-items-baseline" href="{{ dir.url | relative_url }}">
         {{ dir.title | default: dir.url }}
     </a>
 {%- else %}
-    <a class="d-flex flex-items-baseline" href="{{ dir.url | relative_url }}">
+    {% comment %} 4级以后的目录使用缩进样式 {% endcomment %}
+    <a class="caption d-block text-uppercase no-wrap px-2 py-0" href="{{ dir.url | relative_url }}">
         {{ dir.title | default: dir.url }}
     </a>
 {%- endif -%}
