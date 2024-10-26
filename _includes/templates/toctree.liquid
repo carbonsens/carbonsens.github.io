@@ -1,30 +1,7 @@
-{% assign current_product = page.dir | split: '/' | slice: 2 | first %}
+{%- include common/rest/workdir.liquid %}
 
+{% comment %} list the root files {% endcomment %}
 <ul>
-    {% comment %} 显示目录标题 {% endcomment %}
-    {% if workdir_level == 2 %}
-        <li class="toc level-1">
-            <a class="caption d-block text-uppercase no-wrap px-2 py-0">
-                {{ current_product }}
-            </a>
-        </li>
-    {% endif %}
-
-    {% comment %} 显示目录 {% endcomment %}
-    {%- for workdir in workdir_dirs -%}
-        {% assign dir_product = workdir | split: '/' | slice: 2 | first %}
-        {% if dir_product == current_product %}
-            {% assign dir = site_pages | where: "url", workdir | first %}
-            <li class="toc level-1">
-                <a class="d-flex flex-items-baseline" href="{{ dir.url | relative_url }}">
-                    {{ dir.title | default: workdir | split: '/' | last }}
-                </a>
-                {% include templates/_toctree.liquid workdir=workdir %}
-            </li>
-        {% endif %}
-    {%- endfor %}
-
-    {% comment %} 显示文件 {% endcomment %}
     {%- for item in workdir_files -%}
         {%- assign level = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
         {%- capture current -%}
@@ -41,3 +18,6 @@
         </li>
     {%- endfor %}
 </ul>
+
+{% comment %} list the root dirs {% endcomment %}
+{%- for workdir in workdir_dirs %}{% include templates/_toctree.liquid %}{% endfor -%}

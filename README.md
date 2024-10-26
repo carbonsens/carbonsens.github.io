@@ -1,100 +1,36 @@
-# jekyll-rtd-theme
+# Carbonsens 产品文档
 
-![CI](https://github.com/rundocs/jekyll-rtd-theme/workflows/CI/badge.svg?branch=develop)
-![jsDelivr](https://data.jsdelivr.com/v1/package/gh/rundocs/jekyll-rtd-theme/badge)
+欢迎使用 Carbonsens 产品文档。本文档提供了产品使用指南、接口说明和配置实例。
 
-Just another documentation theme compatible with GitHub Pages
+## TS-PSMB-4088 非接触式生命体征监测设备
 
-## What it does?
+### 快速开始
+- [产品概述和使用指南](docs/TS-PSMB-4088/Overview/Overview.md)
+  - 产品简介
+  - 使用准备
+  - 安装步骤
+  - 注意事项
 
-This theme is inspired by [sphinx-rtd-theme](https://github.com/readthedocs/sphinx_rtd_theme) and refactored with:
+### 二次开发文档
+- [接口文档](docs/TS-PSMB-4088/Interface/index.md)
+  - Blufi 配置接口：用于设备近场配置
+  - MQTT 通信接口：用于远程数据交互
 
-- [@primer/css](https://github.com/primer/css)
-- [github-pages](https://github.com/github/pages-gem) ([dependency versions](https://pages.github.com/versions/))
+### 使用实例
+- [配置实例](docs/TS-PSMB-4088/Example/index.md)
+  - 出厂配置
+  - 客户现场配置
+  - 设备重置
+  - 数据值范围
 
-## Quick start
+## 推荐阅读顺序
 
-```yml
-remote_theme: rundocs/jekyll-rtd-theme
-```
+1. 首先阅读[产品概述](docs/TS-PSMB-4088/Overview/Overview.md)，了解产品基本信息
+2. 参考[配置实例](docs/TS-PSMB-4088/Example/index.md)进行设备配置
+3. 如需进行二次开发，请查看[接口文档](docs/TS-PSMB-4088/Interface/index.md)
 
-You can [generate](https://github.com/rundocs/starter-slim/generate) with the same files and folders from [rundocs/starter-slim](https://github.com/rundocs/starter-slim/)
+## 技术支持
 
-## Usage
+如有任何问题，请联系我们的技术支持团队。
 
-Documentation that can guide how to create with Github pages, please refer to [rundocs.io](https://rundocs.io) for details
-
-## Features
-
-- Shortcodes (Toasts card, mermaid)
-- Pages Plugins (emoji, gist, avatar, mentions)
-- Auto generate sidebar
-- [Attribute List Definitions](https://kramdown.gettalong.org/syntax.html#attribute-list-definitions) (Primer/css utilities, Font Awesome 4)
-- Service worker (caches)
-- SEO (404, robots.txt, sitemap.xml)
-- Canonical Link (Open Graph, Twitter Card, Schema data)
-
-## Options
-
-| name          | default value        | description       |
-| ------------- | -------------------- | ----------------- |
-| `title`       | repo name            |                   |
-| `description` | repo description     |                   |
-| `url`         | user domain or cname |                   |
-| `baseurl`     | repo name            |                   |
-| `lang`        | `en`                 |                   |
-| `direction`   | `auto`               | `ltr` or `rtl`    |
-| `highlighter` | `rouge`              | Cannot be changed |
-
-```yml
-# folders sort
-readme_index:
-  with_frontmatter: true
-
-meta:
-  key1: value1
-  key2: value2
-  .
-  .
-  .
-
-google:
-  gtag:
-  adsense:
-
-mathjax: # this will prased to json, default: {}
-
-mermaid:
-  custom:     # mermaid link
-  initialize: # this will prased to json, default: {}
-
-scss:   # also _includes/extra/styles.scss
-script: # also _includes/extra/script.js
-
-translate:
-  # shortcodes
-  danger:
-  note:
-  tip:
-  warning:
-  # 404
-  not_found:
-  # copyright
-  revision:
-  # search
-  searching:
-  search:
-  search_docs:
-  search_results:
-  search_results_found: # the "#" in this translate will replaced with results size!
-  search_results_not_found:
-
-plugins:
-  - jemoji
-  - jekyll-avatar
-  - jekyll-mentions
-```
-
-## The license
-
-The theme is available as open source under the terms of the MIT License
+Email: tansitechnology@carbonsens.com
