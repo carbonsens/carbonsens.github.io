@@ -1,26 +1,23 @@
 {%- assign workdir = include.workdir | default: "/" -%}
-{%- assign current_depth = include.depth | default: 0 | plus: 0 -%}
 
-{%- if current_depth <= 10 -%}  {# 限制最大递归深度为10 #}
-    {%- assign workdir_parts = workdir | split: '/' -%}
-    {%- assign product_level = workdir_parts | slice: 0, 4 | join: '/' -%}
+{%- assign workdir_parts = workdir | split: '/' -%}
+{%- assign product_level = workdir_parts | slice: 0, 4 | join: '/' -%}
 
-    {%- assign workdir = product_level -%}
+{%- assign workdir = product_level -%}
 
-    {%- assign workdir_level = workdir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
-    {%- assign workdir_files = site_files | where_exp: "item", "item.dir == workdir" -%}
+{%- assign workdir_level = workdir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
+{%- assign workdir_files = site_files | where_exp: "item", "item.dir == workdir" -%}
 
-    {%- capture items -%}
-        {%- for item in site_dirs -%}
-            {%- assign current_m1 = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size | minus: 1 -%}
-            {%- if workdir_level == current_m1 -%}
-                {%- assign temp = workdir | append: "@@" -%}
-                {%- assign dir = item.dir | replace: workdir, temp | split: "@@" | first -%}
-                {%- if workdir == dir -%}
-                    {{ item.dir }}|
-                {%- endif -%}
+{%- capture items -%}
+    {%- for item in site_dirs -%}
+        {%- assign current_m1 = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size | minus: 1 -%}
+        {%- if workdir_level == current_m1 -%}
+            {%- assign temp = workdir | append: "@@" -%}
+            {%- assign dir = item.dir | replace: workdir, temp | split: "@@" | first -%}
+            {%- if workdir == dir -%}
+                {{ item.dir }}|
             {%- endif -%}
-        {%- endfor -%}
-    {%- endcapture -%}
-    {%- assign workdir_dirs = items | split: "|" -%}
-{%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endcapture -%}
+{%- assign workdir_dirs = items | split: "|" -%}
