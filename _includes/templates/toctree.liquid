@@ -1,8 +1,7 @@
-{%- include common/rest/workdir.liquid %}
+{%- assign all_pages = site.pages | sort: "sort" -%}
 
-{% comment %} list the root files {% endcomment %}
 <ul>
-    {%- for item in workdir_files -%}
+    {%- for item in all_pages -%}
         {%- assign level = item.dir | append: "temp" | replace_first: "/", "" | split: "/" | size -%}
         {%- capture current -%}
             {%- if page.url == item.url %}current{% endif -%}
@@ -18,6 +17,3 @@
         </li>
     {%- endfor %}
 </ul>
-
-{% comment %} list the root dirs {% endcomment %}
-{%- for workdir in workdir_dirs %}{% include templates/_toctree.liquid %}{% endfor -%}
