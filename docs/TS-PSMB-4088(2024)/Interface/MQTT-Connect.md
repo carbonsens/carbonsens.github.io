@@ -14,7 +14,7 @@ sort: 2
 
 ## 2. 版本支持
 当前最新版本为3.0.x，完整版本列表：
-- [3.0.x](./MQTT-Interface/3.0.x.md) - 最新版本，支持新增配置项、自动校准等功能
+- [3.0.x](./MQTT-Interface/3.0.x.md) - 支持新增配置项、自动校准等功能
 - [2.3.x](./MQTT-Interface/2.3.x.md) - 支持基础功能
 - [2.2.x](./MQTT-Interface/2.2.x.md) - 支持曲线发送功能
 - [2.1.x](./MQTT-Interface/2.1.x.md) - Bug修复版本
