@@ -38,12 +38,16 @@ sort: 2
 </div>
 
 3. 点击"开始扫描"搜索设备
-4. 在设备列表中选择要配置的设备
+4. 在设备列表中选择要配置的设备，进入设备配置面板中，点击"连接设备"
+   
+   **注意事项：**
+   - 配置完设备后，记得断开连接；
+   - 如果下一次搜索不到设备，请重启设备或者APP。
 <div style="text-align: center;">
     <img src="../../../assets/images/TsHelp/ConnectDevice.png" alt="连接设备" width="300" />
 </div>
 
-5. 连接设备后可以进行:
+1. 连接设备后可以进行:
    - WiFi配网
    - 加载配置文件
    - OTA固件升级
@@ -63,17 +67,18 @@ sort: 2
     <img src="../../../assets/images/TsHelp/BatchConfigPannel.png" alt="批量配置" width="300" />
 </div>
 
-2. 配置任务:
-   - 选择任务类型(OTA升级/WiFi配网/应用配置)
-   - 根据选择的任务类型填写相应参数
-3. 扫描并选择要配置的设备
+2. 扫描并选择要配置的设备
 <div style="text-align: center;">
     <img src="../../../assets/images/TsHelp/SelectDevice.png" alt="选择设备" width="300" />
 </div>
 
+3. 配置任务:
+   - 选择任务类型(OTA升级/WiFi配网/应用配置)多选项
+   - 根据选择的任务类型填写相应参数
+
 4. 点击"开始任务"执行配置
    - 可以通过暂停/继续/停止来控制任务
-   - 任务完成后可导出配置结果
+   - 任务完成后可导出配置结果（暂时不可用）
 <div style="text-align: center;">
     <img src="../../../assets/images/TsHelp/BatchConfigDevicePannel.png" alt="批量配置设备面板" width="300" />
 </div>
