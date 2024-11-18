@@ -47,7 +47,7 @@ sort: 2
     <img src="../../../assets/images/TsHelp/ConnectDevice.png" alt="连接设备" width="300" />
 </div>
 
-1. 连接设备后可以进行:
+5. 连接设备后可以进行:
    - WiFi配网
    - 加载配置文件
    - OTA固件升级
@@ -96,19 +96,16 @@ sort: 2
 
 2. 可以进行以下操作:
    - 点击"新建配置"创建配置文件
-   
    - 选择已有配置文件进行编辑
-   
    - 重命名或删除配置文件
-   - 
-   <div style="text-align: center;">
-       <img src="../../../assets/images/TsHelp/NewProfile.png" alt="新建配置" width="300" />
-   </div>
+<div style="text-align: center;">
+    <img src="../../../assets/images/TsHelp/NewProfile.png" alt="新建配置" width="300" />
+</div>
 
-1. 编辑配置文件时:
+3. 编辑配置文件时:
    - 修改配置名称
    - 编辑配置参数
    - 点击保存图标保存修改
-    <div style="text-align: center;">
-       <img src="../../../assets/images/TsHelp/EditProfile.png" alt="编辑配置" width="300" />
-   </div>
+<div style="text-align: center;">
+    <img src="../../../assets/images/TsHelp/EditProfile.png" alt="编辑配置" width="300" />
+</div>
